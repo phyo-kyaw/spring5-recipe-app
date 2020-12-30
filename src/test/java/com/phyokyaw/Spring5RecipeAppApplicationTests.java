@@ -1,4 +1,4 @@
-package com.phyokyaw.spring5_recipe_app;
+package com.phyokyaw;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

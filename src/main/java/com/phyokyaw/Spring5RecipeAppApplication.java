@@ -1,4 +1,4 @@
-package com.phyokyaw.spring5_recipe_app;
+package com.phyokyaw;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
