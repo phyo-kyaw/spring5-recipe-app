@@ -50,4 +50,12 @@ public class Ingredient {
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
+
+    public UintOfMeasure getUmo() {
+        return umo;
+    }
+
+    public void setUmo(UintOfMeasure umo) {
+        this.umo = umo;
+    }
 }
