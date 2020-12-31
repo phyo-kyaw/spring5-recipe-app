@@ -17,13 +17,17 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    //to add
-    //private Difficulty difficulty;
+
+
     @OneToMany(cascade =  CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
 
     @Lob
     private byte[] image;
+
+    //to add
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
 
     @OneToOne( cascade =  CascadeType.ALL)
     private Notes notes;
