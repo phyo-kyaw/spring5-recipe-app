@@ -1,19 +1,26 @@
 package com.phyokyaw.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
 public class Ingredient {
 
     public Ingredient() {
     }
 
-    public Ingredient(String description, BigDecimal amount, UnitOfMeasure umo, Recipe recipe) {
+    public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom) {
         this.description = description;
         this.amount = amount;
-        this.umo = umo;
-        this.recipe = recipe;
+        this.uom = uom;
     }
 
     @Id
@@ -27,45 +34,10 @@ public class Ingredient {
     private Recipe recipe;
 
     @OneToOne( fetch = FetchType.EAGER)
-    private UnitOfMeasure umo;
+    private UnitOfMeasure uom;
 
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
-    }
-
-    public UnitOfMeasure getUmo() {
-        return umo;
-    }
-
-    public void setUmo(UnitOfMeasure umo) {
-        this.umo = umo;
+    public Ingredient removeRecipe(Recipe recipe){
+        this.setRecipe(null);
+        return this;
     }
 }

@@ -1,8 +1,14 @@
 package com.phyokyaw.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
+@Data
+@EqualsAndHashCode(exclude = {"recipeSet"})
 @Entity
 public class Category {
 
@@ -13,29 +19,7 @@ public class Category {
     private String description;
 
     @ManyToMany(mappedBy = "categories")
-    private Set<Recipe> recipeSet;
+    private Set<Recipe> recipeSet =new HashSet<>();;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Set<Recipe> getRecipeSet() {
-        return recipeSet;
-    }
-
-    public void setRecipeSet(Set<Recipe> recipeSet) {
-        this.recipeSet = recipeSet;
-    }
 }

@@ -1,7 +1,10 @@
 package com.phyokyaw.domain;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 public class UnitOfMeasure {
 
@@ -14,28 +17,6 @@ public class UnitOfMeasure {
     @OneToOne
     private Ingredient ingredient;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Ingredient getIngredient() {
-        return ingredient;
-    }
-
-    public void setIngredient(Ingredient ingredient) {
-        this.ingredient = ingredient;
-    }
 }
 
