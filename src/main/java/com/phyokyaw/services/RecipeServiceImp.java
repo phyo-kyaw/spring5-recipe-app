@@ -4,6 +4,7 @@ import com.phyokyaw.commands.RecipeCommand;
 import com.phyokyaw.converters.RecipeCommandToRecipe;
 import com.phyokyaw.converters.RecipeToRecipeCommand;
 import com.phyokyaw.domain.Recipe;
+import com.phyokyaw.exceptions.NotFoundException;
 import com.phyokyaw.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class RecipeServiceImp implements RecipeService{
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if (!recipeOptional.isPresent()) {
-            throw new RuntimeException("Recipe Not Found!");
+            throw new NotFoundException("Recipe Not Found!");
         }
 
         return recipeOptional.get();

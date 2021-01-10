@@ -4,6 +4,7 @@ import com.phyokyaw.commands.RecipeCommand;
 import com.phyokyaw.converters.RecipeCommandToRecipe;
 import com.phyokyaw.converters.RecipeToRecipeCommand;
 import com.phyokyaw.domain.Recipe;
+import com.phyokyaw.exceptions.NotFoundException;
 import com.phyokyaw.repositories.RecipeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -54,6 +55,22 @@ class RecipeServiceImpTest {
         assertNotNull(recipeReturned, () -> "Null recipe returned");
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
+    }
+
+
+    @Test
+    public void getRecipeByIdTestNotFound() throws Exception {
+
+        Optional<Recipe> recipeOptional = Optional.empty();
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        //Recipe recipeReturned = recipeService.findById(1L);
+        Exception exception = assertThrows(NotFoundException.class, () -> {
+            recipeServiceImp.findById(1L);
+        });
+
+        //should go boom
     }
 
     @Test
