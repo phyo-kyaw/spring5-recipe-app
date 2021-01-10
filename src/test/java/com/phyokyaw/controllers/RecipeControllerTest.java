@@ -35,7 +35,9 @@ class RecipeControllerTest {
 
         controller = new RecipeController(recipeService);
 
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(controller)
+                .setControllerAdvice(new ControllerExceptionHandler())
+                .build();
     }
 
     @Test
@@ -44,7 +46,9 @@ class RecipeControllerTest {
         Recipe recipe = new Recipe();
         recipe.setId(1L);
 
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller)
+                .setControllerAdvice(new ControllerExceptionHandler())
+                .build();
 
         when(recipeService.findById(anyLong())).thenReturn(recipe);
 
